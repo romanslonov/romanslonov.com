@@ -1,32 +1,6 @@
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,500italic,700,900,700italic,900italic&subset=latin,cyrillic");
 
-/* ../../my.blocks/close/close.styl:begin */
-.close {
-  position: fixed;
-  background-color: rgba(255,255,255,0.95);
-  pointer-events: none;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1000;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-/* ../../my.blocks/close/close.styl:end */
 /* ../../common.blocks/nav/nav.styl:begin */
 .nav_view_index {
   box-sizing: border-box;
@@ -63,7 +37,15 @@
   color: #669;
 }
 .link.link_view_external {
-  color: #070;
+  color: inherit;
+  border-bottom: 1px solid;
+  padding-bottom: 3px;
+}
+.link.link_view_dribbble {
+  color: #ec4989;
+}
+.link.link_view_dribbble:hover {
+  color: #d21660;
 }
 .link:hover {
   color: #e00;
@@ -114,14 +96,6 @@
   .nav-menu__item {
     margin-left: 48px;
   }
-}
-.nav-menu__item:nth-child(2):before {
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  font-size: 10px;
-  font-weight: bold;
-  content: 'Soon';
 }
 .nav-menu__item:nth-child(3):before {
   position: absolute;
@@ -218,7 +192,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 1170px;
-  padding: 96px 24px;
+  padding: 96px 24px 48px;
   margin: 0 auto;
   display: -webkit-box;
   display: -webkit-flex;
@@ -255,11 +229,20 @@
   text-transform: uppercase;
   left: -85px;
   font-weight: 500;
+  color: #000;
+}
+.project-grid__description {
+  position: absolute;
+  top: 24px;
+  font-size: 32px;
+  line-height: 46px;
+  left: 24px;
+  color: currentColor;
 }
 .project-grid__card {
   position: relative;
   width: 360px;
-  height: 390px;
+  height: 500px;
   margin: 7px;
   background-color: #eee;
   -webkit-box-flex: 1;
@@ -270,31 +253,65 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  color: #99999a;
+}
+.project-grid__card_width_wide {
+  width: 100%;
+  max-width: 620px;
+}
+.project-grid__card_project_wfolio {
+  background-color: #efefef;
+  height: 440px;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+              -ms-grid-row-align: flex-end;
+          align-items: flex-end;
+  color: #000;
+}
+.project-grid__card_project_21special {
+  max-width: 100%;
+  background-color: #000;
+  height: 440px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #99999a;
-}
-.project-grid__card_width_wide {
-  width: 720px;
-}
-.project-grid__card_project_tinco {
-  background-color: #007ee5;
   color: #fff;
-}
-.project-grid__card_project_wfolio {
-  background-color: #1b1f22;
-  color: #fff;
-}
-.project-grid__card_project_creditup {
-  background-color: #4caf50;
 }
 /* ../../my.blocks/project-grid/project-grid.styl:end */
+/* ../../libs/bem-components/common.blocks/image/image.styl:begin */
+.image {
+  border: 0;
+}
+/* ../../libs/bem-components/common.blocks/image/image.styl:end */
+/* ../../common.blocks/image/image.styl:begin */
+.image {
+  max-width: 100%;
+}
+/* ../../common.blocks/image/image.styl:end */
+/* ../../common.blocks/note/note.styl:begin */
+.note {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+  text-align: center;
+  line-height: 28px;
+}
+.note__text {
+  font-size: 18px;
+}
+/* ../../common.blocks/note/note.styl:end */
 /* ../../common.blocks/footer/footer.styl:begin */
 .footer {
   border-top: 2px solid #eee;
@@ -306,26 +323,19 @@
   max-width: 1170px;
   margin: 0 auto;
   padding: 96px 24px;
-}
-@media (min-width: 768px) {
-  .footer_view_index .footer__inner {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
+  text-align: center;
 }
 .footer_view_index .footer__col {
   width: 100%;
-  margin-bottom: 48px;
-}
-@media (min-width: 768px) {
-  .footer_view_index .footer__col {
-    margin-bottom: 0;
-  }
-  .footer_view_index .footer__col:last-child {
-    margin-bottom: 0;
-  }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 48px;
 }
 .footer_view_index .footer__title {
   margin-top: 0;
@@ -335,12 +345,21 @@
   color: #333338;
 }
 .footer_view_index .footer__text {
+  font-size: 18px;
   margin-bottom: 8px;
 }
 .footer_view_index .footer__email {
   color: #333338;
-  font-size: 16px;
+  margin-top: 24px;
+  margin-bottom: 48px;
+  display: block;
+  font-size: 24px;
   font-weight: bold;
+}
+@media (min-width: 768px) {
+  .footer_view_index .footer__email {
+    font-size: 46px;
+  }
 }
 .footer_view_index .footer__email:hover {
   color: #e00;
@@ -350,30 +369,24 @@
 .list_view_horizontal {
   padding: 0;
   margin: 0;
+  font-size: 0;
   list-style-type: none;
 }
-@media (min-width: 768px) {
-  .list_view_horizontal {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
 .list_view_horizontal .list__item {
+  font-size: 18px;
   margin-bottom: 8px;
 }
 @media (min-width: 768px) {
   .list_view_horizontal .list__item {
     margin-right: 16px;
     margin-bottom: 0;
+    display: inline-block;
   }
 }
 /* ../../common.blocks/list/list.styl:end */
 /* ../../common.blocks/page/page.styl:begin */
 .page {
   margin: 0;
-  padding: 12px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -390,13 +403,6 @@
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f1f1;
-  overflow: hidden;
-}
-@media (min-width: 768px) {
-  .page {
-    padding: 96px;
-  }
 }
 .page__inner {
   background-color: #fff;
