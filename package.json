@@ -1,0 +1,17 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "https://romanslonov.com",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romanslonov/personal-site.git"
+  },
+  "keywords": [],
+  "author": "Roman Slonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romanslonov/personal-site/issues"
+  },
+  "homepage": "https://romanslonov.com"
+}
