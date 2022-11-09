@@ -1,0 +1,35 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import tw from 'twin.macro'
+
+export const Navigation = () => {
+  const {pathname} = useRouter();
+
+  const isCurrentRouteActive = (path: string) => path === '/' ? path === pathname : pathname.includes(path);
+
+  const links = [
+    { path: '/', name: 'Home' },
+    { path: '/blog', name: 'Blog' },
+  ]
+
+  return (
+    <nav css={tw`pt-4`}>
+      <ul css={tw`flex items-center space-x-4`}>
+        {links.map(({ path, name }) => (
+          <li key={path}>
+            <Link href={path}>
+              <span
+                css={[
+                  tw`relative inline-flex items-center font-medium space-x-3`,
+                  isCurrentRouteActive(path) ? tw`after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-black text-black` : tw`text-black/50`,
+                ]}
+              >
+                <span>{name}</span>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
