@@ -14,7 +14,7 @@ export const Navigation = () => {
 
   return (
     <nav css={tw`pt-4`}>
-      <ul css={tw`flex items-center space-x-4`}>
+      <ul css={tw`flex items-center justify-center md:justify-start space-x-4`}>
         {links.map(({ path, name }) => (
           <li key={path}>
             <Link href={path}>

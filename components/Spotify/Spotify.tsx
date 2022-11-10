@@ -6,6 +6,7 @@ export default function Spotify () {
     <div css={tw`flex items-center space-x-2`}>
       <SpotifyIcon css={tw`text-[#1ed760]`} width='20' height='20' />
       <span css={tw`font-medium`}>Not Playing</span>
+      <span css={tw`text-gray-500`}>&#8212; Spotify</span>
     </div>
   )
 }
