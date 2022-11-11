@@ -8,12 +8,6 @@ import tw, { GlobalStyles } from 'twin.macro';
 
 import { Navigation } from '../components/Navigation';
 
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
