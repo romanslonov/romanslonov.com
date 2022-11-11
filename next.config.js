@@ -7,6 +7,9 @@ const nextConfig = {
     config.resolve.fallback = { fs: false, module: false, path: false };
     return config;
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
