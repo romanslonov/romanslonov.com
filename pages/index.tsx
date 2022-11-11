@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import tw from 'twin.macro'
 import DribbbleIcon from '../components/Icons/Dribbble'
@@ -8,6 +7,7 @@ import Spotify from '../components/Spotify/Spotify'
 import { getAllPosts } from '../libs/posts'
 import PostsList from '../components/PostsList'
 import type { Post } from '../types/post';
+import SEO from '../components/SEO'
 
 type Props = {
   posts: Post[],
@@ -16,18 +16,7 @@ type Props = {
 export default function Home({ posts }: Props) {
   return (
     <>
-      <Head>
-        <title>Roman Slonov</title>
-        <meta name="description" content="Frontend UI/UX Designer at ServerHub" />
-        <meta property="og:title" content="Roman Slonov" />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content="Frontend UI/UX Designer at ServerHub" />
-        <meta property="twitter:title" content="Roman Slonov" />
-        <meta property="twitter:description" content="Frontend UI/UX Designer at ServerHub" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <SEO title='Roman Slonov' description='Frontend UI/UX Designer at ServerHub' />
       <header css={tw`py-16`}>
         <div css={tw`flex flex-col items-center md:items-start md:flex-row md:justify-between space-y-8 md:space-y-0 md:space-x-8`}>
           <div css={tw`order-2 md:order-1`}>
