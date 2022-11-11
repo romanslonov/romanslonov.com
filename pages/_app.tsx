@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
         <footer css={tw`py-8`}>
-          <p css={tw`text-center text-gray-500`}>
+          <p css={tw`text-center text-gray-500 dark:text-gray-400`}>
             Made with Next.js, Twin.micro and Tailwindcss.
           </p>
         </footer>
