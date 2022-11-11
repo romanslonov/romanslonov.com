@@ -21,7 +21,7 @@ export const Navigation = () => {
               <span
                 css={[
                   tw`relative inline-flex items-center font-medium space-x-3`,
-                  isCurrentRouteActive(path) ? tw`after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-black text-black` : tw`text-black/50`,
+                  isCurrentRouteActive(path) ? tw`after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-black text-black dark:after:bg-white dark:text-white` : tw`text-black/50 dark:text-white/50`,
                 ]}
               >
                 <span>{name}</span>
