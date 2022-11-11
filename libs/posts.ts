@@ -20,7 +20,6 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
 
   const items: Items = {}
 
-  // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === 'slug') {
       items[field] = _slug

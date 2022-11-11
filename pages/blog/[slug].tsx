@@ -1,7 +1,10 @@
-import { useRouter } from 'next/router'
+import Image from 'next/image';
+import { format } from 'date-fns';
 import tw from 'twin.macro';
 import markdownToHtml from '../../libs/markdownToHtml';
 import { getAllPosts, getPostBySlug } from '../../libs/posts';
+import { calculateReadingTime } from '../../libs/calculateReadingTime';
+import type { Post } from '../../types/post';
 
 type Params = {
   params: {
@@ -9,15 +12,25 @@ type Params = {
   }
 }
 
-export default function BlogSlug({ post }) {
-  const { query } = useRouter();
+type Props = {
+  post: Post,
+}
 
-  console.log(query.slug)
-
+export default function BlogSlug({ post }: Props) {
   return (
-    <article className='prose prose-p:text-gray-500 lg:prose-xl dark:prose-invert dark:prose-p:text-gray-400 pt-8'>
+    <article className='prose prose-h1:mb-0 xl:prose-h1:mb-0 prose-p:text-gray-500 lg:prose-xl dark:prose-invert dark:prose-p:text-gray-400 pt-8'>
       <h1>{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+      <div css={tw`flex items-center justify-between`}>
+        <div css={tw`flex items-center text-sm font-medium space-x-2`}>
+          <Image css={tw`flex-shrink-0 rounded-full dark:grayscale`} priority src='/avatar.jpg' width={40} height={40} sizes={'20vw'} alt='Profile picture' />
+          <span>Roman Slonov</span>
+          <span>&#x2022;</span>
+          <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
+          <span>&#x2022;</span>
+          <span>{calculateReadingTime(post.content)} min read</span>
+        </div>
+      </div>
+      {post.html && <div dangerouslySetInnerHTML={{ __html: post.html }}></div>}
     </article>
   )
 }
@@ -30,13 +43,13 @@ export async function getStaticProps({ params }: Params) {
     'description',
     'content',
   ])
-  const content = await markdownToHtml(post.content || '')
+  const html = await markdownToHtml(post.content || '');
 
   return {
     props: {
       post: {
-        ...post,
-        content,
+        ...post as Post,
+        html,
       },
     },
   }

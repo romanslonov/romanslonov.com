@@ -7,8 +7,13 @@ import TwitterIcon from '../components/Icons/Twitter'
 import Spotify from '../components/Spotify/Spotify'
 import { getAllPosts } from '../libs/posts'
 import PostsList from '../components/PostsList'
+import type { Post } from '../types/post';
 
-export default function Home({ posts }) {
+type Props = {
+  posts: Post[],
+}
+
+export default function Home({ posts }: Props) {
   return (
     <>
       <Head>
@@ -71,6 +76,7 @@ export async function getStaticProps () {
     'title',
     'date',
     'slug',
+    'content',
   ]);
 
   return {

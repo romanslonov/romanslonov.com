@@ -1,8 +1,15 @@
+import { format } from 'date-fns';
 import Link from 'next/link';
 import tw from 'twin.macro';
+import { calculateReadingTime } from '../libs/calculateReadingTime';
 import ArrowRightLongIcon from './Icons/ArrowRightLong';
+import type { Post } from '../types/post';
 
-export default function PostsList ({ posts }) {
+type Props = {
+  posts: Post[],
+}
+
+export default function PostsList ({ posts }: Props) {
   return (<section>
     <h2 css={tw`text-xl font-bold mb-4`}>Recent posts</h2>
 
@@ -13,9 +20,9 @@ export default function PostsList ({ posts }) {
             <h3 css={tw`font-medium`}>{post.title}</h3>
           </Link>
           <div css={tw`flex items-center font-mono text-sm text-gray-500 dark:text-gray-400 mt-1 space-x-2`}>
-            {/* <span>{format(post.date, 'H')}</span> */}
+            <span>{format(new Date(post.date), 'MMM d, YYY')}</span>
             <span>&#x2022;</span>
-            <span>3 minutes read</span>
+            <span>{calculateReadingTime(post.content)} min read</span>
           </div>
 
           <div css={tw`opacity-0 group-hover:opacity-100 -translate-x-1.5 group-hover:translate-x-0 transition-all duration-300 absolute top-1/2 right-4 -translate-y-1/2`}>
