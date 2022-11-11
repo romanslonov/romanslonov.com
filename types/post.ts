@@ -5,4 +5,4 @@ export type Post = {
   date: string;
   content: string;
   html?: string;
-}
+};

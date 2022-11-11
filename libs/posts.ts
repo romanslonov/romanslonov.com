@@ -1,12 +1,12 @@
 import fs from 'fs';
-import { join } from 'path';
 import matter from 'gray-matter';
+import { join } from 'path';
 
-const dir = join(process.cwd(), 'posts')
+const dir = join(process.cwd(), 'posts');
 
 export const getPostsSlugs = () => {
   return fs.readdirSync(dir);
-}
+};
 
 export const getPostBySlug = (slug: string, fields: string[] = []) => {
   const _slug = slug.replace(/\.md$/, '');
@@ -15,26 +15,26 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
   const { data, content } = matter(contents);
 
   type Items = {
-    [key: string]: string
-  }
+    [key: string]: string;
+  };
 
-  const items: Items = {}
+  const items: Items = {};
 
   fields.forEach((field) => {
     if (field === 'slug') {
-      items[field] = _slug
+      items[field] = _slug;
     }
     if (field === 'content') {
-      items[field] = content
+      items[field] = content;
     }
 
     if (typeof data[field] !== 'undefined') {
-      items[field] = data[field]
+      items[field] = data[field];
     }
-  })
+  });
 
   return items;
-}
+};
 
 export const getAllPosts = (fields: string[] = []) => {
   const slugs = getPostsSlugs();
@@ -43,4 +43,4 @@ export const getAllPosts = (fields: string[] = []) => {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
   return posts;
-}
+};
