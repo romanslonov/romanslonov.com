@@ -3,9 +3,16 @@ import '../styles/tailwind.css';
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 import tw, { GlobalStyles } from 'twin.macro';
 
 import { Navigation } from '../components/Navigation';
+
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +22,19 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-DX2039QKDD"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-DX2039QKDD');
+        `}
+      </Script>
       <div css={tw`min-h-screen flex flex-col`}>
         <GlobalStyles />
         <main css={tw`flex-1 w-full max-w-3xl mx-auto space-y-8 p-4`}>
