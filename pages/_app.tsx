@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <div css={tw`min-h-screen flex flex-col`}>
         <GlobalStyles />
-        <main css={tw`flex-1 w-full max-w-3xl mx-auto space-y-8 p-4`}>
+        <main css={tw`flex-1 w-full max-w-3xl mx-auto space-y-12 p-4`}>
           <Navigation />
           <Component {...pageProps} />
         </main>

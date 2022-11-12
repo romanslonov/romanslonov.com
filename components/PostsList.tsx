@@ -19,7 +19,7 @@ export default function PostsList({ posts }: Props) {
         {posts.map((post) => (
           <li key={post.slug} className="group" css={tw`relative py-4`}>
             <Link href={'/blog/' + post.slug}>
-              <h3 css={tw`font-medium`}>{post.title}</h3>
+              <h3 css={tw`text-lg font-medium`}>{post.title}</h3>
             </Link>
             <div
               css={tw`flex items-center font-mono text-sm text-gray-500 dark:text-gray-400 mt-1 space-x-2`}
