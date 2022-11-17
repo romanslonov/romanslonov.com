@@ -26,7 +26,9 @@ const items: Work[] = [
 
 export const Item = ({ item: { name, description, url, preview } }: { item: Work }) => {
   return (
-    <li css={tw`flex flex-col bg-neutral-50 dark:bg-neutral-800 rounded-md p-8`}>
+    <li
+      css={tw`flex flex-col bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-md transition-colors duration-300 p-8`}
+    >
       {preview ? (
         <Image
           src={preview.src}
@@ -39,7 +41,7 @@ export const Item = ({ item: { name, description, url, preview } }: { item: Work
         ></Image>
       ) : (
         <div
-          css={tw`flex items-center justify-center text-gray-600 dark:text-gray-100 h-[180px] bg-neutral-200/50 dark:bg-neutral-700 rounded-md mb-4`}
+          css={tw`flex items-center justify-center text-gray-600 dark:text-gray-100 h-[180px] bg-neutral-200/50 dark:bg-neutral-600 rounded-md mb-4`}
         >
           <LockClosed />
         </div>
