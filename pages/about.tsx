@@ -16,7 +16,7 @@ export default function About() {
         <header css={tw`flex items-start gap-16 mb-16`}>
           <div>
             <h1 css={tw`font-bold text-4xl mb-4`}>Hey, I am Roman 👋</h1>
-            <p css={tw`text-xl leading-relaxed text-gray-600`}>
+            <p css={tw`text-xl leading-relaxed text-gray-600 dark:text-gray-400`}>
               With over 6 years of experience working with tech companies and startups, I
               am a Frontend developer, UI/UX designer specializing in building fast and
               convenient User Interfaces.
@@ -33,7 +33,7 @@ export default function About() {
             />
           </div>
         </header>
-        <main css={tw`text-lg leading-relaxed space-y-8`}>
+        <main className="prose prose-p:text-gray-500 lg:prose-xl dark:prose-invert dark:prose-p:text-gray-400">
           <p>
             I started developing and designing websites at school. Participated in
             olympiads and various competitions. Since then I have a passion for designing
