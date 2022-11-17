@@ -29,7 +29,7 @@ export default function Home({ posts }: Props) {
             <p
               css={tw`text-center md:text-left text-xl leading-8 text-gray-500 dark:text-gray-400 mb-8`}
             >
-              Hey there 👋, I am Roman. Last 8+ years I develop fast and convenient User
+              Hey there 👋 I am Roman. Last 6+ years I develop fast and convenient User
               Interfaces that people enjoy. Design system enthusiast.{' '}
               <a
                 css={tw`text-black dark:text-white transition-opacity duration-300 hover:opacity-70 border-b pb-0.5`}
@@ -93,10 +93,11 @@ export default function Home({ posts }: Props) {
           </div>
         </div>
       </header>
+      <main css={tw`space-y-8`}>
+        <LatestWork />
 
-      <LatestWork />
-
-      <PostsList posts={posts} />
+        <PostsList posts={posts} />
+      </main>
     </>
   );
 }
