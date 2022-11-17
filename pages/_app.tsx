@@ -31,10 +31,10 @@ export default function App({ Component, pageProps }: AppProps) {
       </Script>
       <div css={tw`min-h-screen flex flex-col`}>
         <GlobalStyles />
-        <main css={tw`flex-1 w-full max-w-3xl mx-auto space-y-12 p-4`}>
+        <div css={tw`flex-1 w-full max-w-3xl mx-auto space-y-12 p-4`}>
           <Navigation />
           <Component {...pageProps} />
-        </main>
+        </div>
         <footer css={tw`py-8`}>
           <p css={tw`text-center text-gray-500 dark:text-gray-400`}>
             Made with Next.js, Twin.micro and Tailwindcss.
