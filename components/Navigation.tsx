@@ -10,6 +10,7 @@ export const Navigation = () => {
 
   const links = [
     { path: '/', name: 'Home' },
+    { path: '/about', name: 'About' },
     { path: '/blog', name: 'Blog' },
   ];
 
