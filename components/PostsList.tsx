@@ -13,13 +13,17 @@ type Props = {
 export default function PostsList({ posts }: Props) {
   return (
     <section>
-      <h2 css={tw`text-xl font-bold mb-4`}>Recent posts</h2>
+      <h2 css={tw`text-xl font-bold`}>Recent posts</h2>
 
       <ul css={tw`divide-y dark:divide-white/10`}>
         {posts.map((post) => (
           <li key={post.slug} className="group" css={tw`relative py-4`}>
             <Link href={'/blog/' + post.slug}>
-              <h3 css={tw`text-lg font-medium`}>{post.title}</h3>
+              <h3
+                css={tw`text-lg font-medium hover:text-green-500 transition-colors duration-300`}
+              >
+                {post.title}
+              </h3>
             </Link>
             <div
               css={tw`flex items-center font-mono text-sm text-gray-500 dark:text-gray-400 mt-1 space-x-2`}
