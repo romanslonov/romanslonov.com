@@ -4,9 +4,9 @@ import tw from 'twin.macro';
 import DribbbleIcon from '../components/Icons/Dribbble';
 import GithubIcon from '../components/Icons/Github';
 import TwitterIcon from '../components/Icons/Twitter';
-import LatestWork from '../components/LatestWork';
 import PostsList from '../components/PostsList';
 import SEO from '../components/SEO';
+import WorksList from '../components/WorksList';
 import { getAllPosts } from '../libs/posts';
 import type { Post } from '../types/post';
 
@@ -32,7 +32,7 @@ export default function Home({ posts }: Props) {
               Hey there 👋 I am Roman. Last 6+ years I develop fast and convenient User
               Interfaces that people enjoy. Design system enthusiast.{' '}
               <a
-                css={tw`text-black dark:text-white transition-opacity duration-300 hover:opacity-70 border-b pb-0.5`}
+                css={tw`text-black dark:text-white hover:text-green-500 transition-colors duration-300 pb-0.5`}
                 href="mailto:hello@romanslonov.com"
               >
                 Reach me out
@@ -93,9 +93,8 @@ export default function Home({ posts }: Props) {
           </div>
         </div>
       </header>
-      <main css={tw`space-y-8`}>
-        <LatestWork />
-
+      <main css={tw`space-y-16`}>
+        <WorksList />
         <PostsList posts={posts} />
       </main>
     </>
