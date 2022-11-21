@@ -29,15 +29,51 @@ export default function App({ Component, pageProps }: AppProps) {
           gtag('config', 'G-DX2039QKDD');
         `}
       </Script>
-      <div css={tw`min-h-screen flex flex-col`}>
+      <div css={tw`flex flex-col min-h-screen`}>
         <GlobalStyles />
-        <div css={tw`flex-1 w-full max-w-3xl mx-auto space-y-12 p-4`}>
+        <div css={tw`flex-1 w-full max-w-3xl p-4 mx-auto space-y-12`}>
           <Navigation />
           <Component {...pageProps} />
         </div>
         <footer css={tw`py-8`}>
           <p css={tw`text-center text-gray-500 dark:text-gray-400`}>
-            Made with Next.js, Twin.micro and Tailwindcss.
+            Built with{' '}
+            <a
+              css={tw`hover:text-green-500`}
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Next.js
+            </a>
+            ,{' '}
+            <a
+              css={tw`hover:text-green-500`}
+              href="https://github.com/ben-rogerson/twin.macro"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Twin.micro
+            </a>
+            ,{' '}
+            <a
+              css={tw`hover:text-green-500`}
+              href="https://tailwindcss.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Tailwind
+            </a>{' '}
+            and{' '}
+            <a
+              css={tw`hover:text-green-500`}
+              href="https://vercel.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Vercel
+            </a>
+            .
           </p>
         </footer>
       </div>
