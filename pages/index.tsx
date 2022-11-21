@@ -1,3 +1,5 @@
+import { type Post, allPosts } from 'contentlayer/generated';
+import { compareDesc } from 'date-fns';
 import Image from 'next/image';
 import tw from 'twin.macro';
 
@@ -7,8 +9,6 @@ import TwitterIcon from '../components/Icons/Twitter';
 import PostsList from '../components/PostsList';
 import SEO from '../components/SEO';
 import WorksList from '../components/WorksList';
-import { getAllPosts } from '../libs/posts';
-import type { Post } from '../types/post';
 
 type Props = {
   posts: Post[];
@@ -20,14 +20,14 @@ export default function Home({ posts }: Props) {
       <SEO title="Roman Slonov" description="Frontend UI/UX Designer at ServerHub" />
       <header css={tw`pt-8 pb-16`}>
         <div
-          css={tw`flex flex-col items-center md:items-start md:flex-row md:justify-between space-y-8 md:space-y-0 md:space-x-8`}
+          css={tw`flex flex-col items-center space-y-8 md:items-start md:flex-row md:justify-between md:space-y-0 md:space-x-8`}
         >
           <div css={tw`order-2 md:order-1`}>
-            <h1 css={tw`text-center md:text-left text-4xl font-bold mb-8`}>
+            <h1 css={tw`mb-8 text-4xl font-bold text-center md:text-left`}>
               Frontend &amp; <br /> UI/UX Designer
             </h1>
             <p
-              css={tw`text-center md:text-left text-xl leading-8 text-gray-500 dark:text-gray-400 mb-8`}
+              css={tw`mb-8 text-xl leading-8 text-center text-gray-500 md:text-left dark:text-gray-400`}
             >
               Hey there 👋 I am Roman. Last 6+ years I develop fast and convenient User
               Interfaces that people enjoy. Design system enthusiast.{' '}
@@ -80,9 +80,9 @@ export default function Home({ posts }: Props) {
               </ul>
             </div>
           </div>
-          <div css={tw`order-1 md:order-2 flex-shrink-0`}>
+          <div css={tw`flex-shrink-0 order-1 md:order-2`}>
             <Image
-              css={tw`flex-shrink-0 rounded-full dark:grayscale mb-4 md:mb-0`}
+              css={tw`flex-shrink-0 mb-4 rounded-full dark:grayscale md:mb-0`}
               priority
               src="/avatar.jpg"
               width={120}
@@ -102,11 +102,11 @@ export default function Home({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts(['title', 'date', 'slug', 'content']);
-
   return {
     props: {
-      posts,
+      posts: allPosts.sort((a, b) => {
+        return compareDesc(new Date(a.date), new Date(b.date));
+      }),
     },
   };
 }

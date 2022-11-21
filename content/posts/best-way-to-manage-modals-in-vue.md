@@ -1,6 +1,5 @@
 ---
 title: Best way to manage modals in Vue
-slug: best-way-to-manage-modals-in-vue
 description: Learn best possible solution to manage modals in your Vue 3 application. Using store and hooks.
 date: '2022-10-01T07:00:00.000Z'
 ---

@@ -1,12 +1,10 @@
+import { type Post, allPosts } from 'contentlayer/generated';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import tw from 'twin.macro';
 
 import SEO from '../../components/SEO';
 import { calculateReadingTime } from '../../libs/calculateReadingTime';
-import markdownToHtml from '../../libs/markdownToHtml';
-import { getAllPosts, getPostBySlug } from '../../libs/posts';
-import type { Post } from '../../types/post';
 
 type Params = {
   params: {
@@ -18,14 +16,14 @@ type Props = {
   post: Post;
 };
 
-export default function BlogSlug({ post }: Props) {
+export default function SingleBlogPost({ post }: Props) {
   return (
     <>
       <SEO title={`${post.title} — Roman Slonov`} description={post.description} />
-      <article className="prose prose-p:text-gray-500 lg:prose-xl dark:prose-invert dark:prose-p:text-gray-400 prose-h1:mb-0 xl:prose-h1:mb-0 pt-8">
+      <article className="pt-8 prose prose-p:text-gray-500 lg:prose-xl dark:prose-invert dark:prose-p:text-gray-400 prose-h1:mb-0 xl:prose-h1:mb-0">
         <h1>{post.title}</h1>
         <div css={tw`flex items-center justify-between`}>
-          <div css={tw`flex items-center text-sm font-medium space-x-2`}>
+          <div css={tw`flex items-center space-x-2 text-sm font-medium`}>
             <Image
               css={tw`flex-shrink-0 rounded-full dark:grayscale`}
               priority
@@ -39,40 +37,26 @@ export default function BlogSlug({ post }: Props) {
             <span>&#x2022;</span>
             <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
             <span>&#x2022;</span>
-            <span>{calculateReadingTime(post.content)} min read</span>
+            <span>{calculateReadingTime(post.body.raw)} min read</span>
           </div>
         </div>
-        {post.html && <div dangerouslySetInnerHTML={{ __html: post.html }}></div>}
+        <div dangerouslySetInnerHTML={{ __html: post.body.html }}></div>
       </article>
     </>
   );
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'description',
-    'content',
-  ]);
-  const html = await markdownToHtml(post.content || '');
-
   return {
     props: {
-      post: {
-        ...(post as Post),
-        html,
-      },
+      post: allPosts.find((post) => post.slug === params?.slug),
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug']);
-
   return {
-    paths: posts.map((post) => {
+    paths: allPosts.map((post) => {
       return {
         params: {
           slug: post.slug,
