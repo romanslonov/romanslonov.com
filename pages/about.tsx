@@ -21,7 +21,7 @@ export default function About() {
               convenient User Interfaces.
             </p>
             <a
-              href="https://romanslonov.com/resume.pdf"
+              href="https://romanslonov.com/Roman_Slonov_Frontend_Developer_Resume.pdf"
               css={tw`inline-flex items-center bg-green-500 hover:bg-green-700 transition-colors duration-300 text-white dark:text-black h-10 rounded-md space-x-2 px-4`}
             >
               <svg
@@ -33,7 +33,7 @@ export default function About() {
               >
                 <path d="M13.75 7h-3v5.296l1.943-2.048a.75.75 0 011.114 1.004l-3.25 3.5a.75.75 0 01-1.114 0l-3.25-3.5a.75.75 0 111.114-1.004l1.943 2.048V7h1.5V1.75a.75.75 0 00-1.5 0V7h-3A2.25 2.25 0 004 9.25v7.5A2.25 2.25 0 006.25 19h7.5A2.25 2.25 0 0016 16.75v-7.5A2.25 2.25 0 0013.75 7z" />
               </svg>
-              <span css={tw`font-medium`}>Resume</span>
+              <span css={tw`font-medium`}>View Resume</span>
             </a>
           </div>
         </header>
@@ -64,7 +64,7 @@ export default function About() {
             my&nbsp;
             <a
               css={tw`text-green-500 hover:text-green-400 transition-colors duration-300`}
-              href="https://romanslonov.com/resume.pdf"
+              href="https://romanslonov.com/Roman_Slonov_Frontend_Developer_Resume.pdf"
             >
               resume
             </a>
