@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 type Props = {
   isLoading: boolean;
   likes: number | undefined;
-  isCurrentUserLike: boolean;
+  isCurrentUserLike: boolean | undefined;
   action: () => void;
 };
 
