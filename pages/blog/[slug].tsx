@@ -1,7 +1,6 @@
 import PostStats from 'components/PostStats';
 import SEO from 'components/SEO';
 import { type Post, allPosts } from 'contentlayer/generated';
-import { format } from 'date-fns';
 import Image from 'next/image';
 import tw from 'twin.macro';
 
@@ -34,10 +33,8 @@ export default function SingleBlogPost({ post }: Props) {
                 alt="Profile picture"
               />
               <span>Roman Slonov</span>
-              <span>&#x2022;</span>
-              <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
             </div>
-            {<PostStats post={post} />}
+            {<PostStats interactable={true} post={post} />}
           </div>
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.body.html }}></div>
