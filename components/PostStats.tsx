@@ -30,7 +30,9 @@ export default function PostStats({
   const IconWrapper = tw`text-gray-500`;
 
   useEffect(() => {
-    incrementViews();
+    if (interactable) {
+      incrementViews();
+    }
   }, [post.slug]);
 
   return (
