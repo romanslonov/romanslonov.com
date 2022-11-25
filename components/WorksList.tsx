@@ -1,8 +1,7 @@
+import LockClosedIcon from '@heroicons/react/20/solid/LockClosedIcon';
 import Image from 'next/image';
 import tw from 'twin.macro';
-
-import type { Work } from '../types/work';
-import LockClosed from './Icons/LockClosed';
+import type { Work } from 'types/work';
 
 const items: Work[] = [
   {
@@ -27,7 +26,7 @@ const items: Work[] = [
 export const Item = ({ item: { name, description, url, preview } }: { item: Work }) => {
   return (
     <li
-      css={tw`flex flex-col bg-neutral-100 hover:bg-neutral-200/75 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl transition-colors duration-300 p-8`}
+      css={tw`flex flex-col p-8 transition-colors duration-300 bg-neutral-100 hover:bg-neutral-200/75 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl`}
     >
       {preview ? (
         <Image
@@ -37,23 +36,23 @@ export const Item = ({ item: { name, description, url, preview } }: { item: Work
           height={200}
           sizes={'20vw'}
           priority
-          css={tw`border rounded-md mb-4`}
+          css={tw`mb-4 border rounded-md`}
         ></Image>
       ) : (
         <div
           css={tw`flex items-center justify-center text-gray-600 dark:text-gray-100 h-[180px] bg-neutral-300/50 dark:bg-neutral-600 rounded-md mb-4`}
         >
-          <LockClosed />
+          <LockClosedIcon width={20} height={20} />
         </div>
       )}
-      <h3 css={tw`font-bold text-xl mb-2`}>{name}</h3>
+      <h3 css={tw`mb-2 text-xl font-bold`}>{name}</h3>
       <p
-        css={tw`flex-1 text-lg text-gray-500 dark:text-gray-400 mb-4`}
+        css={tw`flex-1 mb-4 text-lg text-gray-500 dark:text-gray-400`}
         dangerouslySetInnerHTML={{ __html: description }}
       ></p>
       {url ? (
         <a
-          css={tw`font-medium hover:text-green-500 transition-colors duration-300`}
+          css={tw`font-medium transition-colors duration-300 hover:text-green-500`}
           href={url}
           target="_blank"
           rel="noreferrer"
@@ -70,9 +69,9 @@ export const Item = ({ item: { name, description, url, preview } }: { item: Work
 export default function WorksList() {
   return (
     <section>
-      <h2 css={tw`text-xl font-bold mb-4`}>Latest work</h2>
+      <h2 css={tw`mb-4 text-xl font-bold`}>Latest work</h2>
 
-      <ul css={tw`grid md:grid-cols-2 gap-4`}>
+      <ul css={tw`grid gap-4 md:grid-cols-2`}>
         {items.map((item) => (
           <Item key={item.name} item={item} />
         ))}
