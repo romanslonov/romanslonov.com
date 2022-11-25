@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import tw from 'twin.macro';
 
-import { calculateReadingTime } from '../libs/calculateReadingTime';
+import { calculateReadingTime } from '../lib/calculateReadingTime';
 import ArrowRightLongIcon from './Icons/ArrowRightLong';
 
 type Props = {
