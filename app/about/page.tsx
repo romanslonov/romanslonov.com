@@ -1,28 +1,27 @@
-import tw from 'twin.macro';
+import { type Metadata } from 'next';
 
-import SEO from '../components/SEO';
+export const metadata: Metadata = {
+  title: 'About me — Roman Slonov',
+  description: `With over 6 years of experience working with tech companies and startups, I
+  am a Frontend developer, UI/UX designer specializing in building fast and
+  convenient User Interfaces.`,
+};
 
-export default function About() {
+export default function Page() {
   return (
-    <div css={tw`py-16`}>
-      <SEO
-        title="About me — Roman Slonov"
-        description="With over 6 years of experience working with tech companies and startups, I
-        am a Frontend developer, UI/UX designer specializing in building fast and
-        convenient User Interfaces."
-      />
+    <div className="py-16">
       <div>
-        <header css={tw`mb-16`}>
+        <header className="mb-16">
           <div>
-            <h1 css={tw`font-bold text-4xl mb-4`}>Hey, I am Roman 👋</h1>
-            <p css={tw`text-2xl leading-relaxed text-gray-600 dark:text-gray-400 mb-4`}>
+            <h1 className="font-bold text-4xl mb-4">Hey, I am Roman 👋</h1>
+            <p className="text-2xl leading-relaxed text-neutral-600 dark:text-neutral-400 mb-4">
               With over 6 years of experience working with tech companies and startups, I
               am a Frontend developer, UI/UX designer specializing in building fast and
               convenient User Interfaces.
             </p>
             <a
               href="https://romanslonov.com/Roman_Slonov_Frontend_Developer_Resume.pdf"
-              css={tw`inline-flex items-center bg-green-500 hover:bg-green-700 transition-colors duration-300 text-white dark:text-black h-10 rounded-md space-x-2 px-4`}
+              className="inline-flex items-center bg-green-500 hover:bg-green-700 transition-colors duration-300 text-white dark:text-black h-10 rounded-md space-x-2 px-4"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,11 +32,11 @@ export default function About() {
               >
                 <path d="M13.75 7h-3v5.296l1.943-2.048a.75.75 0 011.114 1.004l-3.25 3.5a.75.75 0 01-1.114 0l-3.25-3.5a.75.75 0 111.114-1.004l1.943 2.048V7h1.5V1.75a.75.75 0 00-1.5 0V7h-3A2.25 2.25 0 004 9.25v7.5A2.25 2.25 0 006.25 19h7.5A2.25 2.25 0 0016 16.75v-7.5A2.25 2.25 0 0013.75 7z" />
               </svg>
-              <span css={tw`font-medium`}>View Resume</span>
+              <span className="font-medium">View Resume</span>
             </a>
           </div>
         </header>
-        <main className="prose prose-p:text-gray-500 lg:prose-xl dark:prose-invert dark:prose-p:text-gray-400 mb-16">
+        <main className="prose prose-p:text-neutral-500 lg:prose-xl dark:prose-invert dark:prose-p:text-neutral-400 mb-16">
           {/* <h2>Beginning</h2> */}
           <p>
             I started developing and designing websites at school. Since then I have a
@@ -63,7 +62,7 @@ export default function About() {
             You can find all technologies that I use, experience and other details in
             my&nbsp;
             <a
-              css={tw`text-green-500 hover:text-green-400 transition-colors duration-300`}
+              className="text-green-500 hover:text-green-400 transition-colors duration-300"
               href="https://romanslonov.com/Roman_Slonov_Frontend_Developer_Resume.pdf"
             >
               resume
@@ -71,14 +70,14 @@ export default function About() {
             .
           </p>
         </main>
-        <div css={tw`bg-neutral-100 dark:bg-neutral-900 text-center rounded-md p-8`}>
-          <h2 css={tw`text-3xl font-bold mb-4`}>Get in touch</h2>
-          <p css={tw`text-xl text-gray-500 dark:text-gray-400 mb-8`}>
+        <div className="bg-neutral-100 dark:bg-neutral-900 text-center rounded-md p-8">
+          <h2 className="text-3xl font-bold mb-4">Get in touch</h2>
+          <p className="text-xl text-neutral-500 dark:text-neutral-400 mb-8">
             If you have a project in mind or simply interested in finding out more, <br />
             get in touch by email I will get back to you asap.
           </p>
           <a
-            css={tw`text-2xl underline text-green-500 hover:text-green-400 transition-colors duration-300`}
+            className="text-2xl underline text-green-500 hover:text-green-400 transition-colors duration-300"
             href="mailto:hello@romanslonov.com"
           >
             hello@romanslonov.com

@@ -4,7 +4,13 @@
 
 @layer base {
   body {
-    font-family: Helvetica Neue, sans-serif;
     @apply bg-white text-black dark:bg-black dark:text-white;
+    font-family:
+      Helvetica Neue,
+      sans-serif;
   }
+}
+
+div[data-rehype-pretty-code-fragment] pre {
+  @apply text-[15px];
 }

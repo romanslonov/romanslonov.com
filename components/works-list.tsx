@@ -1,12 +1,22 @@
 import LockClosedIcon from '@heroicons/react/20/solid/LockClosedIcon';
 import Image from 'next/image';
-import tw from 'twin.macro';
+import { type ComponentPropsWithoutRef } from 'react';
 import type { Work } from 'types/work';
 
 const items: Work[] = [
   {
     preview: {
-      src: '/eonix_preview.webp',
+      src: '/webvirtcloud_preview.webp',
+      alt: 'WebVirtCloud preview',
+    },
+    name: 'WebVirtCloud',
+    description: `Self hosted cloud soulution.`,
+    url: 'https://webvirt.cloud',
+    available: true,
+  },
+  {
+    preview: {
+      src: '/eonix_preview.jpg',
       alt: 'Eonix preview',
     },
     name: 'Eonix',
@@ -23,36 +33,34 @@ const items: Work[] = [
   },
 ];
 
-export const Item = ({ item: { name, description, url, preview } }: { item: Work }) => {
+export function WorkItem({
+  item: { name, description, url, preview },
+}: ComponentPropsWithoutRef<'li'> & { item: Work }) {
   return (
-    <li
-      css={tw`flex flex-col p-8 transition-colors duration-300 bg-neutral-100 hover:bg-neutral-200/75 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl`}
-    >
+    <li className="flex flex-col p-4 transition-colors duration-300 bg-neutral-100 dark:bg-neutral-800/60 rounded-xl">
       {preview ? (
         <Image
           src={preview.src}
           alt={preview.alt}
-          width={300}
-          height={200}
+          width={600}
+          height={400}
           sizes={'20vw'}
           priority
-          css={tw`mb-4 border rounded-md`}
+          className="mb-4 h-[200px] object-cover rounded-md"
         ></Image>
       ) : (
-        <div
-          css={tw`flex items-center justify-center text-gray-600 dark:text-gray-100 h-[180px] bg-neutral-300/50 dark:bg-neutral-600 rounded-md mb-4`}
-        >
+        <div className="flex items-center justify-center dark:text-neutral-500 h-[200px] bg-neutral-300/50 dark:bg-neutral-800 rounded-md mb-4">
           <LockClosedIcon width={20} height={20} />
         </div>
       )}
-      <h3 css={tw`mb-2 text-xl font-bold`}>{name}</h3>
+      <h3 className="mb-2 text-xl font-bold">{name}</h3>
       <p
-        css={tw`flex-1 mb-4 text-lg text-gray-500 dark:text-gray-400`}
+        className="flex-1 mb-4 text-neutral-500 dark:text-neutral-500"
         dangerouslySetInnerHTML={{ __html: description }}
       ></p>
       {url ? (
         <a
-          css={tw`font-medium transition-colors duration-300 hover:text-green-500`}
+          className="font-medium transition-colors text-center bg-neutral-200 dark:bg-neutral-800 py-4 rounded-lg duration-300 hover:text-green-500"
           href={url}
           target="_blank"
           rel="noreferrer"
@@ -60,20 +68,22 @@ export const Item = ({ item: { name, description, url, preview } }: { item: Work
           Visit website
         </a>
       ) : (
-        <span css={tw`font-medium`}>Coming soon</span>
+        <span className="font-medium text-center py-4 rounded-lg bg-neutral-300/30 dark:bg-neutral-800/40 dark:text-neutral-500">
+          Coming soon
+        </span>
       )}
     </li>
   );
-};
+}
 
 export default function WorksList() {
   return (
     <section>
-      <h2 css={tw`mb-4 text-xl font-bold`}>Latest work</h2>
+      <h2 className="mb-4 text-xl font-bold">Latest work</h2>
 
-      <ul css={tw`grid gap-4 md:grid-cols-2`}>
+      <ul className="grid gap-4 md:grid-cols-2">
         {items.map((item) => (
-          <Item key={item.name} item={item} />
+          <WorkItem key={item.name} item={item} />
         ))}
       </ul>
     </section>

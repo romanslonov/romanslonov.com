@@ -1,6 +1,6 @@
 import HeartSolid from '@heroicons/react/20/solid/HeartIcon';
 import HeartOutline from '@heroicons/react/24/outline/HeartIcon';
-import tw from 'twin.macro';
+import { cva } from 'class-variance-authority';
 
 type Props = {
   isLoading: boolean;
@@ -9,27 +9,32 @@ type Props = {
   action: () => void;
 };
 
+const LikeButtonVarians = cva(
+  'flex items-center px-2 py-2 space-x-1 font-medium rounded-md',
+  {
+    variants: {
+      variant: {
+        active: 'text-white bg-green-500',
+        disabled:
+          'text-neutral-600 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-700',
+      },
+    },
+  },
+);
+
 export default function LikeButton({
   isLoading,
   likes,
   isCurrentUserLike,
   action,
 }: Props) {
-  const LikeButtonActive = tw`text-white bg-green-500`;
-  const LikeButtonDisabled = tw`text-neutral-600 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-700`;
-
   return (
     <button
       disabled={isLoading || isCurrentUserLike}
       onClick={action}
-      css={[
-        tw`flex items-center px-2 py-2 space-x-1 font-medium rounded-md`,
-        isLoading
-          ? LikeButtonDisabled
-          : isCurrentUserLike
-          ? LikeButtonDisabled
-          : LikeButtonActive,
-      ]}
+      className={LikeButtonVarians({
+        variant: isLoading || isCurrentUserLike ? 'disabled' : 'active',
+      })}
     >
       <span>
         {isCurrentUserLike ? (
@@ -39,7 +44,7 @@ export default function LikeButton({
         )}
       </span>
       <span>Likes</span>
-      <span css={tw`opacity-75`}>{likes ?? '-'}</span>
+      <span className="opacity-75">{likes ?? '-'}</span>
     </button>
   );
 }

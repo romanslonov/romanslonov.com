@@ -1,9 +1,11 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import highlight from 'remark-prism';
+import readingTime from 'reading-time';
+import prettycode from 'rehype-pretty-code';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: '**/*.md',
+  filePathPattern: 'posts/**/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
       type: 'string',
@@ -21,13 +23,14 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: (post) => post._raw.sourceFileName.replace(/\.md$/, ''),
+      resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, ''),
     },
+    readTime: { type: 'string', resolve: (post) => readingTime(post.body.raw).text },
   },
 }));
 
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post],
-  markdown: { remarkPlugins: [highlight] },
+  mdx: { rehypePlugins: [prettycode] },
 });
