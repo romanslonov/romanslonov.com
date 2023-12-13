@@ -1,0 +1,61 @@
+---
+title: 'Tanstack Query v5: Reusable Custom Hooks'
+description: Create reusable custom hooks for data fetching with Tanstack Query. It will show you how to solve Property 'queryKey' is missing issue.
+date: '2023-12-13T13:23:00.000Z'
+---
+
+Since the release of TanStack Query v5, many people have faced issues with reusing custom hooks. In this article, I will show you how to solve this problem.
+
+## Problem
+
+When you try to wrap your useQuery into a custom hook and define options as an argument with `UseQueryOptions` type, you will get an error when you try to pass some options in it:
+
+> `Property 'queryKey' is missing in type '{ staleTime: number; refetchOnWindowFocus: false; }' but required in type 'UseQueryOptions<Post, Error, Post, QueryKey>'.ts(2345)`
+
+## Solution #1
+
+You can `Omit` `queryKey` and `queryFn` from `UseQueryOptions` type like that:
+
+```ts
+import { type UseQueryOptions, useQuery } from '@tanstack/react-query';
+import { type Post, getPost } from '@/entities/post';
+
+export function usePost(
+  id: number,
+  options?: Omit<UseQueryOptions<Post>, 'queryKey' | 'queryFn'>,
+) {
+  return useQuery({
+    queryKey: ['post', id],
+    queryFn: () => getPost(id).then((response) => response.post),
+    ...options,
+  });
+}
+```
+
+Now the error is gone and you can pass any options you want with autocompletion.
+
+## Solution #2
+
+You can define in `options` specific ones you really needed like so:
+
+```ts
+import { type UseQueryOptions, useQuery } from '@tanstack/react-query';
+import { type Post, getPost } from '@/entities/post';
+
+export function usePost(
+  id: number,
+  options?: {
+    // just a few for example
+    staleTime?: UseQueryOptions<Post>['staleTime'];
+    refetchOnWindowFocus?: UseQueryOptions<Post>['refetchOnWindowFocus'];
+  },
+) {
+  return useQuery({
+    queryKey: ['post', id],
+    queryFn: () => getPost(id).then((response) => response.post),
+    ...options,
+  });
+}
+```
+
+Thats it! Now you can reuse your custom hooks with any options you want. I show example in React but it also works in Vue, etc.
