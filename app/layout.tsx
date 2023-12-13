@@ -13,11 +13,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children, ...props }: PropsWithChildren) {
+  const gaTrackingId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   return (
     <html lang="en" className="scroll-smooth">
-      {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ? (
-        <GoogleAnalytics gaTrackingId={'G-DX2039QKDD'} />
-      ) : null}
+      {gaTrackingId ? <GoogleAnalytics gaTrackingId={gaTrackingId} /> : null}
       <body className="flex min-h-screen flex-col overflow-x-hidden">
         <div className="flex-1 w-full max-w-3xl p-4 mx-auto space-y-12">
           <Navigation />
