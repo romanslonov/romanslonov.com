@@ -7,6 +7,7 @@ import GithubIcon from '@/components/icons/github';
 import XIcon from '@/components/icons/x';
 import PostsList from '@/components/posts-list';
 import WorksList from '@/components/works-list';
+import SideProjectsList from '@/components/side-projects-list';
 
 export default function Page() {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
@@ -85,6 +86,7 @@ export default function Page() {
         </div>
       </header>
       <main className="space-y-16">
+        <SideProjectsList />
         <WorksList />
         <PostsList posts={posts} />
       </main>
