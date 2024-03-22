@@ -1,3 +1,4 @@
+import { cx } from '@/lib/cx';
 import LockClosedIcon from '@heroicons/react/20/solid/LockClosedIcon';
 import Image from 'next/image';
 import { type ComponentPropsWithoutRef } from 'react';
@@ -8,10 +9,22 @@ const items: Work[] = [
     preview: {
       src: '/wishub_preview.webp',
       alt: 'Wishub preview',
+      align: 'center',
     },
-    name: 'Wishub.app',
-    description: `Personal side projects. Wishub is a web application that helps you to create and manage your wishlists. It's a place where you can store all your wishes and share them with your friends and family.`,
+    name: 'Wishub',
+    description: `Wishub is a web application that helps you to create and manage your wishlists. It's a place where you can store all your wishes and share them with your friends and family.`,
     url: 'https://wishub.app',
+    available: true,
+  },
+  {
+    preview: {
+      src: '/unimark_preview.webp',
+      alt: 'Unimark preview',
+      align: 'left',
+    },
+    name: 'Unimark',
+    description: `Unimark makes it easy to manage all of your bookmarks. Use our cloud or as a self-hosted and own your data.`,
+    url: 'https://unimark.app',
     available: true,
   },
 ];
@@ -29,7 +42,11 @@ export function WorkItem({
           height={400}
           sizes={'20vw'}
           priority
-          className="mb-4 h-[200px] object-cover rounded-md"
+          className={cx([
+            'mb-4 h-[200px] object-cover rounded-md',
+            preview.align === 'left' && 'object-left',
+            preview.align === 'center' && 'object-center',
+          ])}
         ></Image>
       ) : (
         <div className="flex items-center justify-center dark:text-neutral-500 h-[200px] bg-neutral-300/50 dark:bg-neutral-800 rounded-md mb-4">
