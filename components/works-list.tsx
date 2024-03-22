@@ -8,6 +8,7 @@ const items: Work[] = [
     preview: {
       src: '/webvirtcloud_preview.webp',
       alt: 'WebVirtCloud preview',
+      align: 'center',
     },
     name: 'WebVirtCloud',
     description: `Self hosted cloud soulution.`,
@@ -18,6 +19,7 @@ const items: Work[] = [
     preview: {
       src: '/eonix_preview.jpg',
       alt: 'Eonix preview',
+      align: 'center',
     },
     name: 'Eonix',
     description: `&quot;From cloud hosting and dedicated servers to different hosting solutions, our
