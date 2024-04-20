@@ -1,13 +1,16 @@
 import { allPosts } from 'contentlayer/generated';
-import { type Metadata } from 'next';
 import { compareDesc } from 'date-fns';
 import Image from 'next/image';
-import DribbbleIcon from '@/components/icons/dribbble';
-import GithubIcon from '@/components/icons/github';
-import XIcon from '@/components/icons/x';
 import PostsList from '@/components/posts-list';
 import WorksList from '@/components/works-list';
 import SideProjectsList from '@/components/side-projects-list';
+import { SocialLinks } from '@/components/social-links';
+import { ReactIcon } from '@/components/icons/react';
+import { VueIcon } from '@/components/icons/vue';
+import { NextjsIcon } from '@/components/icons/nextjs';
+import { RemixIcon } from '@/components/icons/remix';
+import { TypescriptIcon } from '@/components/icons/ts';
+import { Badge } from '@/components/badge';
 
 export default function Page() {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
@@ -15,73 +18,60 @@ export default function Page() {
   return (
     <>
       <header className="pt-8 pb-16">
+        <div className="relative mb-16 inline-block">
+          <Image
+            className="flex-shrink-0 mb-4 rounded-lg md:mb-0"
+            priority
+            src="/avatar.jpg"
+            width={100}
+            height={100}
+            sizes={'20vw'}
+            alt="Profile picture"
+          />
+          <div className="absolute right-[-160px] bottom-[-2px] flex items-center gap-2">
+            <span className="relative flex w-5 h-5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex border-4 dark:border-black border-white rounded-full w-5 h-5 bg-green-500"></span>
+            </span>
+            <p className="whitespace-nowrap font-medium text-sm">
+              Available for part-time
+            </p>
+          </div>
+        </div>
         <div className="flex flex-col items-center space-y-8 md:items-start md:flex-row md:justify-between md:space-y-0 md:space-x-8">
           <div className="order-2 md:order-1">
-            <h1 className="mb-8 text-4xl font-bold text-center md:text-left">
-              Frontend Developer &amp; <br /> UI/UX Designer
-            </h1>
-            <p className="mb-8 text-xl leading-8 text-center text-neutral-500 md:text-left dark:text-neutral-400">
-              Hey there 👋 I am Roman. Last 6+ years I develop fast and convenient User
-              Interfaces that people enjoy. Design system enthusiast.{' '}
+            <h1 className="mb-2 text-2xl font-bold">Frontend Developer &amp; Designer</h1>
+            <p className="mb-8 text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+              Hi 👋 I am Roman. I am building web applications using{' '}
+              <Badge>
+                <ReactIcon height={12} width={12} /> React
+              </Badge>
+              ,{' '}
+              <Badge>
+                <VueIcon height={12} width={12} /> Vue
+              </Badge>
+              ,{' '}
+              <Badge>
+                <NextjsIcon height={12} width={12} /> Nextjs
+              </Badge>{' '}
+              ,{' '}
+              <Badge>
+                <RemixIcon height={12} width={12} /> Remix
+              </Badge>{' '}
+              and{' '}
+              <Badge>
+                <TypescriptIcon height={12} width={12} /> Typescript
+              </Badge>
+              . Connect with me for collaboration, part-time job, or just say hi.{' '}
               <a
-                className="text-black dark:text-white hover:text-green-500 transition-colors duration-300 pb-0.5"
+                className="text-black dark:text-white font-medium hover:text-green-500 transition-colors duration-300 pb-0.5"
                 href="mailto:hello@romanslonov.com"
               >
-                Reach me out
+                hello@romanslonov.com
               </a>
               .
             </p>
-            <div className="flex justify-between">
-              <ul className="flex items-center space-x-4">
-                <li>
-                  <a
-                    title="Github"
-                    className="transition-colors duration-300 hover:text-neutral-400"
-                    href="https://github.com/romanslonov"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="sr-only">Github</span>
-                    <GithubIcon width={20} height={20} />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    title="Dribbble"
-                    className="transition-colors duration-300 hover:text-[#ea4c89]"
-                    href="https://dribbble.com/romanslonov"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="sr-only">Dribbble</span>
-                    <DribbbleIcon width={20} height={20} />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    title="X"
-                    className="transition-colors duration-300 hover:text-neutral-400"
-                    href="https://x.com/romanslonov"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="sr-only">X</span>
-                    <XIcon width={20} height={20} />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="flex-shrink-0 order-1 md:order-2">
-            <Image
-              className="flex-shrink-0 mb-4 rounded-full md:mb-0"
-              priority
-              src="/avatar.jpg"
-              width={120}
-              height={120}
-              sizes={'20vw'}
-              alt="Profile picture"
-            />
+            <SocialLinks />
           </div>
         </div>
       </header>

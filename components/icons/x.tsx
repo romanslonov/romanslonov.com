@@ -1,11 +1,6 @@
-export default function XIcon({ width = 32, height = 32 }) {
+export default function XIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width={width}
-      height={height}
-    >
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <g>
         <path
           fill="currentColor"
