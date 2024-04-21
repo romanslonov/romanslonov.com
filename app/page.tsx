@@ -1,5 +1,3 @@
-import { allPosts } from 'contentlayer/generated';
-import { compareDesc } from 'date-fns';
 import Image from 'next/image';
 import PostsList from '@/components/posts-list';
 import WorksList from '@/components/works-list';
@@ -13,8 +11,6 @@ import { TypescriptIcon } from '@/components/icons/ts';
 import { Badge } from '@/components/badge';
 
 export default function Page() {
-  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-
   return (
     <>
       <header className="pt-8 pb-16">
@@ -75,10 +71,10 @@ export default function Page() {
           </div>
         </div>
       </header>
-      <main className="space-y-16">
+      <main className="space-y-16 pb-16">
         <SideProjectsList />
         <WorksList />
-        <PostsList posts={posts} />
+        <PostsList />
       </main>
     </>
   );

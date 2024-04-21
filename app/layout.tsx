@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   title: 'Roman Slonov',
   description: 'Frontend Developer & Designer',
   authors: { name: 'Roman Slonov', url: 'https://romanslonov.com' },
-  themeColor: { color: '#000', media: '(prefers-color-scheme: dark)' },
   robots: 'index, follow',
 };
 

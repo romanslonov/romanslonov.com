@@ -1,31 +1,28 @@
-import ArrowLongRightIcon from '@heroicons/react/24/solid/ArrowLongRightIcon';
 import Link from 'next/link';
-import { type Post } from 'contentlayer/generated';
-
 import PostStats from './post-stats';
+import { getBlogPosts } from '@/app/blog/utils';
+import { compareDesc } from 'date-fns';
 
-type Props = {
-  posts: Post[];
-};
-
-export default function PostsList({ posts }: Props) {
+export default function PostsList() {
+  const posts = getBlogPosts().sort((a, b) => {
+    return compareDesc(
+      new Date(a.metadata.publishedAt),
+      new Date(b.metadata.publishedAt),
+    );
+  });
   return (
     <section>
-      <h2 className="text-xl font-bold">Recent posts</h2>
+      <h2 className="text-xl font-bold mb-4">Recent posts</h2>
 
       <ul className="divide-y dark:divide-white/10">
         {posts.map((post) => (
-          <li key={post.slug} className="group relative py-4">
+          <li key={post.slug} className="flex items-center justify-between relative py-1">
             <Link href={'/blog/' + post.slug} className="inline-block mb-2">
-              <h3 className="text-lg font-medium transition-colors duration-300 hover:text-green-500">
-                {post.title}
+              <h3 className="font-medium transition-colors duration-300 hover:text-green-500">
+                {post.metadata.title}
               </h3>
             </Link>
-            <PostStats post={post} />
-
-            <div className="opacity-0 group-hover:opacity-100 -translate-x-1.5 group-hover:translate-x-0 transition-all duration-300 absolute top-1/2 right-4 -translate-y-1/2">
-              <ArrowLongRightIcon width={24} height={24} />
-            </div>
+            <PostStats publishedAt={post.metadata.publishedAt} slug={post.slug} />
           </li>
         ))}
       </ul>
