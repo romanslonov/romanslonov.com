@@ -1,4 +1,4 @@
-import '@/styles/globals.css';
+import './globals.css';
 import GoogleAnalytics from '@/app/google-analytics';
 import UmamiAnalytics from './umami-analytics';
 import { type PropsWithChildren } from 'react';

@@ -1,4 +1,4 @@
-import { cx } from '@/lib/cx';
+import { cn } from '@/lib/cn';
 import LockClosedIcon from '@heroicons/react/20/solid/LockClosedIcon';
 import Image from 'next/image';
 import { type ComponentPropsWithoutRef } from 'react';
@@ -41,7 +41,7 @@ export function WorkItem({
           width={600}
           height={400}
           priority
-          className={cx([
+          className={cn([
             'mb-4 h-[200px] object-cover rounded-md',
             preview.align === 'left' && 'object-left',
             preview.align === 'center' && 'object-center',

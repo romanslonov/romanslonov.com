@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'lib/cx';
+import { cn } from 'lib/cn';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -23,7 +23,7 @@ export const Navigation = () => {
           <li key={path}>
             <Link href={path}>
               <span
-                className={cx(
+                className={cn(
                   'relative inline-flex items-center font-medium transition-colors duration-300 space-x-3',
                   [
                     isCurrentRouteActive(path)
