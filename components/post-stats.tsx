@@ -24,7 +24,7 @@ export default function PostStats({
   }, [interactable]);
 
   return (
-    <div className="flex items-center gap-2 md:gap-3 flex-wrap md:flex-nowrap text-sm text-neutral-500">
+    <div className="flex items-center gap-2 md:gap-3 flex-wrap md:flex-nowrap text-sm text-neutral-400">
       <div className={'flex items-center gap-1 md:gap-2'}>
         <span className="whitespace-nowrap">
           {format(new Date(publishedAt), 'MMM d, yyy')}

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white text-black dark:bg-black dark:text-white;
+    @apply bg-white text-black dark:bg-neutral-950 dark:text-white;
     font-family:
       Helvetica Neue,
       sans-serif;
