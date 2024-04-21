@@ -1,4 +1,3 @@
-// import PostStats from '@/components/post-stats';
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getBlogPosts } from '../utils';
@@ -26,7 +25,7 @@ export function generateMetadata({ params }: Props): Metadata {
     title,
     publishedAt: publishedTime,
     summary: description,
-    image,
+    // image,
   } = post.metadata;
 
   return {
@@ -55,7 +54,7 @@ export default function Page({ params }: Props) {
 
   return (
     <>
-      <article className="pt-8 prose prose-p:text-neutral-600 prose-h1:leading-[56px] lg:prose-lg dark:prose-invert dark:prose-p:text-neutral-400 prose-h1:mb-4 xl:prose-h1:mb-4">
+      <article className="pt-8 prose prose-p:text-neutral-600 prose-h1:leading-[42px] lg:prose-h1:leading-[56px] lg:prose-lg dark:prose-invert dark:prose-p:text-neutral-400 prose-h1:mb-4 xl:prose-h1:mb-4">
         <h1>{post.metadata.title}</h1>
         <PostStats
           publishedAt={post.metadata.publishedAt}

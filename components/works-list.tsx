@@ -11,7 +11,7 @@ const items: Work[] = [
       align: 'center',
     },
     name: 'WebVirtCloud',
-    description: `Self hosted cloud soulution.`,
+    description: `Meet a modern and powerful all-in-one cloud management platform for your company & your clients`,
     url: 'https://webvirt.cloud',
     available: true,
   },
@@ -22,16 +22,11 @@ const items: Work[] = [
       align: 'center',
     },
     name: 'Eonix',
-    description: `&quot;From cloud hosting and dedicated servers to different hosting solutions, our
+    description: `From cloud hosting and dedicated servers to different hosting solutions, our
     brands deliver the tools and support that business owners need to fuel their
-    online presence and reach customers everywhere around the globe.&quot;`,
+    online presence and reach customers everywhere around the globe.`,
     url: 'https://eonix.net',
     available: true,
-  },
-  {
-    name: 'SimplyStack Cloud Platform',
-    description: `&quot;Get flexible cloud computing services with powerful tools, scalable in seconds and nothing short of global coverage. Our network is reliable by design, built for thriving businesses and more.&quot;`,
-    available: false,
   },
 ];
 
@@ -46,7 +41,6 @@ export function WorkItem({
           alt={preview.alt}
           width={600}
           height={400}
-          sizes={'20vw'}
           priority
           className="mb-4 h-[200px] object-cover rounded-md"
         ></Image>

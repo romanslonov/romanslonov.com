@@ -16,8 +16,11 @@ export default function PostsList() {
 
       <ul className="divide-y dark:divide-white/10">
         {posts.map((post) => (
-          <li key={post.slug} className="flex items-center justify-between relative py-1">
-            <Link href={'/blog/' + post.slug} className="inline-block mb-2">
+          <li
+            key={post.slug}
+            className="flex md:items-center flex-col md:flex-row justify-between relative py-1.5"
+          >
+            <Link href={'/blog/' + post.slug} className="inline-block">
               <h3 className="font-medium transition-colors duration-300 hover:text-green-500">
                 {post.metadata.title}
               </h3>

@@ -40,7 +40,6 @@ export function WorkItem({
           alt={preview.alt}
           width={600}
           height={400}
-          sizes={'20vw'}
           priority
           className={cx([
             'mb-4 h-[200px] object-cover rounded-md',

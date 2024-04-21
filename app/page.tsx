@@ -21,10 +21,9 @@ export default function Page() {
             src="/avatar.jpg"
             width={100}
             height={100}
-            sizes={'20vw'}
             alt="Profile picture"
           />
-          <div className="absolute right-[-160px] bottom-[-2px] flex items-center gap-2">
+          <div className="absolute right-[-160px] bottom-[8px] md:bottom-[-2px] flex items-center gap-2">
             <span className="relative flex w-5 h-5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex border-4 dark:border-black border-white rounded-full w-5 h-5 bg-green-500"></span>
@@ -71,11 +70,11 @@ export default function Page() {
           </div>
         </div>
       </header>
-      <main className="space-y-16 pb-16">
+      <div className="space-y-16 pb-16">
         <SideProjectsList />
         <WorksList />
         <PostsList />
-      </main>
+      </div>
     </>
   );
 }
