@@ -48,7 +48,7 @@ export default function Page() {
               ,{' '}
               <Badge>
                 <NextjsIcon height={12} width={12} /> Nextjs
-              </Badge>{' '}
+              </Badge>
               ,{' '}
               <Badge>
                 <RemixIcon height={12} width={12} /> Remix
@@ -57,14 +57,7 @@ export default function Page() {
               <Badge>
                 <TypescriptIcon height={12} width={12} /> Typescript
               </Badge>
-              . Connect with me for collaboration, part-time job, or just say hi.{' '}
-              <a
-                className="text-black dark:text-white font-medium hover:text-green-500 transition-colors duration-300 pb-0.5"
-                href="mailto:hello@romanslonov.com"
-              >
-                hello@romanslonov.com
-              </a>
-              .
+              . Connect with me for collaboration, part-time job, or just say hi.
             </p>
             <SocialLinks />
           </div>

@@ -12,13 +12,12 @@ export const Navigation = () => {
 
   const links = [
     { path: '/', name: 'Home' },
-    { path: '/about', name: 'About' },
     { path: '/blog', name: 'Blog' },
   ];
 
   return (
-    <nav className="pt-4">
-      <ul className="flex items-center justify-center md:justify-start space-x-4">
+    <nav className="flex items-center justify-between gap-4 pt-4">
+      <ul className="flex items-center gap-4">
         {links.map(({ path, name }) => (
           <li key={path}>
             <Link href={path}>
@@ -37,6 +36,16 @@ export const Navigation = () => {
             </Link>
           </li>
         ))}
+      </ul>
+      <ul>
+        <li>
+          <a
+            className="text-black dark:text-white font-medium hover:text-green-500 transition-colors duration-300 pb-0.5"
+            href="mailto:hello@romanslonov.com"
+          >
+            hello@romanslonov.com
+          </a>
+        </li>
       </ul>
     </nav>
   );
