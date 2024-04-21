@@ -6,6 +6,7 @@ export function CustomMDX(props: MDXRemoteProps) {
     <MDXRemote
       {...props}
       components={{ ...(props.components || {}) }}
+      // @ts-expect-error
       options={{ mdxOptions: { rehypePlugins: [prettycode] } }}
     />
   );

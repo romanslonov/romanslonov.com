@@ -27,7 +27,7 @@ export default function PostStats({
     <div className="flex items-center gap-2 md:gap-3 flex-wrap md:flex-nowrap text-sm text-neutral-500">
       <div className={'flex items-center gap-1 md:gap-2'}>
         <span className="whitespace-nowrap">
-          {format(new Date(publishedAt), 'MMM d, YYY')}
+          {format(new Date(publishedAt), 'MMM d, yyy')}
         </span>
       </div>
       <div>&#x2022;</div>
