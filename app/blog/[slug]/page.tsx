@@ -22,12 +22,7 @@ export function generateMetadata({ params }: Props): Metadata {
 
   if (!post) notFound();
 
-  const {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    // image,
-  } = post.metadata;
+  const { title, publishedAt: publishedTime, summary: description } = post.metadata;
 
   return {
     title: `${title} - Roman Slonov's Blog`,
@@ -38,7 +33,6 @@ export function generateMetadata({ params }: Props): Metadata {
       description,
       type: 'article',
       publishedTime,
-      // images: post.image,
     },
     twitter: {
       card: 'summary_large_image',
