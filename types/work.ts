@@ -1,5 +1,5 @@
 export type Work = {
-  preview?: {
+  preview: {
     src: string;
     alt: string;
     align: 'left' | 'center';

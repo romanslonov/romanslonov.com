@@ -37,7 +37,8 @@ export default function Layout({ children, ...props }: PropsWithChildren) {
       {gaTrackingId ? <GoogleAnalytics gaTrackingId={gaTrackingId} /> : null}
       {umamiId ? <UmamiAnalytics umamiId={umamiId} /> : null}
       <body className="flex min-h-screen flex-col overflow-x-hidden animate-blurred-fade-in">
-        <div className="flex-1 w-full max-w-3xl p-4 mx-auto space-y-12">
+        {/* max-w-3xl */}
+        <div className="flex-1 w-full p-4 mx-auto space-y-12">
           <Navigation />
           <main className="flex-1">{children}</main>
         </div>

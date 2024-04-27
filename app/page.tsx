@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import PostsList from '@/components/posts-list';
-import WorksList from '@/components/works-list';
-import SideProjectsList from '@/components/side-projects-list';
+import ProjectsList from '@/components/projects-list';
 import { SocialLinks } from '@/components/social-links';
 import { ReactIcon } from '@/components/icons/react';
 import { VueIcon } from '@/components/icons/vue';
@@ -13,7 +12,7 @@ import { Badge } from '@/components/badge';
 export default function Page() {
   return (
     <>
-      <header className="pt-8 pb-16">
+      <header className="pt-8 pb-16 max-w-3xl mx-auto">
         <div className="relative mb-16 inline-block">
           <Image
             className="flex-shrink-0 mb-4 rounded-lg md:mb-0"
@@ -36,20 +35,17 @@ export default function Page() {
         <div className="flex flex-col items-center space-y-8 md:items-start md:flex-row md:justify-between md:space-y-0 md:space-x-8">
           <div className="order-2 md:order-1">
             <h1 className="mb-2 text-2xl font-bold">Frontend Developer &amp; Designer</h1>
-            <p className="mb-8 text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
-              Hi 👋 I am Roman. I am building web applications using{' '}
+            <p className="mb-8 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+              Hi, I am Roman. I am building web applications using{' '}
               <Badge>
                 <ReactIcon height={12} width={12} /> React
-              </Badge>
-              ,{' '}
+              </Badge>{' '}
               <Badge>
                 <VueIcon height={12} width={12} /> Vue
-              </Badge>
-              ,{' '}
+              </Badge>{' '}
               <Badge>
                 <NextjsIcon height={12} width={12} /> Nextjs
-              </Badge>
-              ,{' '}
+              </Badge>{' '}
               <Badge>
                 <RemixIcon height={12} width={12} /> Remix
               </Badge>{' '}
@@ -63,9 +59,8 @@ export default function Page() {
           </div>
         </div>
       </header>
-      <div className="space-y-16 pb-16">
-        <SideProjectsList />
-        <WorksList />
+      <div className="space-y-16 pb-16 max-w-7xl mx-auto">
+        <ProjectsList />
         <PostsList />
       </div>
     </>

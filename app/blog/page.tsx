@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="space-y-8 md:space-y-16">
+    <div className="space-y-8 max-w-3xl mx-auto md:space-y-16">
       <header>
-        <h1 className="mb-2 text-4xl font-bold">Blog</h1>
+        <h1 className="mb-2 text-2xl font-bold">Blog</h1>
         <p className="text-neutral-500 dark:text-neutral-400">
           The place where I am sharing my thoughts, experience, knowledge.
         </p>

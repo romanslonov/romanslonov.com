@@ -16,7 +16,7 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-between gap-4 pt-4">
+    <nav className="flex items-center justify-between mx-auto max-w-3xl gap-4 pt-4">
       <ul className="flex items-center gap-4">
         {links.map(({ path, name }) => (
           <li key={path}>

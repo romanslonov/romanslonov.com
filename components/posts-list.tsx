@@ -11,14 +11,14 @@ export default function PostsList() {
     );
   });
   return (
-    <section>
-      <h2 className="text-xl font-bold mb-4">Recent posts</h2>
+    <section className="max-w-3xl mx-auto">
+      <h2 className="text-lg font-medium mb-4">Recent posts</h2>
 
       <ul className="divide-y dark:divide-white/10">
         {posts.map((post) => (
           <li
             key={post.slug}
-            className="flex md:items-center flex-col md:flex-row justify-between relative py-1.5"
+            className="flex sm:items-center flex-col sm:flex-row justify-between relative py-1.5"
           >
             <Link href={'/blog/' + post.slug} className="inline-block">
               <h3 className="font-medium transition-colors duration-300 hover:text-green-500">
