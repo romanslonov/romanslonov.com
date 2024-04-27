@@ -1,0 +1,103 @@
+---
+title: React 19 first beta is out
+summary: React 19 first beta is out lets see what's new
+publishedAt: '2024-04-27'
+---
+
+It's almost 2 years since the last major release of React. The React team has been working on the next major version of React and this week they have released the first beta of React 19.
+
+## The key changes
+
+- **React compiler**: React 19 introduces a new compiler that will allow React to optimize your code automatically. So you don't need to manually use any of those hooks `memo`, `useMemo` and `useCallback` anymore.
+
+- **Enhanced hooks**: New hooks that will bring big changes.
+
+  - **forwardRef**. The `ref` now is passed as props
+
+  ```tsx
+  function Button({ ref, children }) {
+    <button ref={ref}>{children}</button>;
+  }
+  ```
+
+  - **use**. This hook will simplify handling promises and other async work.
+
+  ```tsx
+  function BlogPosts() {
+    const posts = use(fetchPosts());
+    return (
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    );
+  }
+  ```
+
+  Another useful usage of this hook is to `use(Context)`.
+
+  ```tsx
+  const { theme, toggleTheme } = use(ThemeContext);
+  ```
+
+  **useFormStatus**. Finally! You don't need to wrap your submit button to it's own component to get `pending` status. Now it has built in.
+
+  ```tsx
+  const { pending, data, method, action } = useFormStatus();
+  ```
+
+  **useFormState**. This hook will simplify the form state management.
+
+  ```tsx
+  const [state, formAction] = useFormState(fn, initialState, permalink?);
+  ```
+
+  **useOptimistic**. This hook will help you to handle optimistic updates.
+
+  ```tsx
+  const [optimisticMessage, addOptimisticMessage] = useOptimistic(state, updatefn);
+  ```
+
+- **Server components & Actions**: React and Nextjs team worked together to bring server components to React. If you are using Nextjs you already used most of these features. And now they are available in React as well with some improvements in DX.
+
+- **Document Metadata**: Currently, to change the document metadata you need to use a third-party libraries and write custom code to do that. And finally React 19 brings a new API to handle document metadata. Example:
+
+```tsx
+export function HomeRoute() {
+  return (
+    <>
+      <title>Your custom title here</title>
+      <meta name="description" content="Description of your home page" />
+      // Page content goes here...
+    </>
+  );
+}
+```
+
+- **Assets Loading**: Usually react developers dealt with "unstyled" flickering on their own using many different methods to prevent that and optimize initial load speed of the application. So they introduced a new [Resource Loading APIs](https://react.dev/reference/react-dom#resource-preloading-apis) like `preload` and `preinit` to provide more control for when a resource should load and initialise, include scripts, stylesheets, and fonts.
+
+- **Web components**: With React 19 you can use web components in your React applications out of the box.
+
+## How to try now?
+
+```bash
+npm install react@beta react-dom@beta
+```
+
+If you are using typescript you need to install the types as well like so:
+
+```json
+{
+  "dependencies": {
+    "@types/react": "npm:types-react@beta",
+    "@types/react-dom": "npm:types-react-dom@beta"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@beta",
+    "@types/react-dom": "npm:types-react-dom@beta"
+  }
+}
+```
+
+For futher information you can check the [official blog post](https://react.dev/blog/2024/04/27/react-19-first-beta-is-out). I'm sure we'll see more details about new features and improvements at React Conf on May 15-16.
