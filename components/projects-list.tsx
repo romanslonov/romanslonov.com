@@ -2,48 +2,44 @@ import ArrowRightCircleIcon from '@heroicons/react/20/solid/ArrowRightCircleIcon
 import ClockIcon from '@heroicons/react/24/outline/ClockIcon';
 import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
-import type { Work } from 'types/work';
 import GithubIcon from '@/components/icons/github';
 
-const items: Work[] = [
+const items = [
   {
     preview: {
       src: 'https://webvirt.cloud/logo.svg',
       alt: 'WebVirtCloud preview',
-      align: 'center',
     },
     name: 'WebVirtCloud',
     description: `Meet a modern and powerful all-in-one cloud management platform for your company & your clients.`,
     url: 'https://webvirt.cloud',
-    available: true,
+    source: 'https://github.com/orgs/webvirtcloud/repositories',
   },
   {
     preview: {
       src: '/unimark.svg',
       alt: 'Unimark preview',
-      align: 'left',
     },
     name: 'Unimark',
     description: `Unimark makes it easy to manage all of your bookmarks. Use our cloud or as a self-hosted and own your data.`,
     url: 'https://unimark.app',
-    available: true,
+    source: 'https://github.com/unimarkapp/unimark.app',
   },
   {
     preview: {
       src: '/wishub.svg',
       alt: 'Wishub preview',
-      align: 'center',
     },
     name: 'Wishub',
     description: `Wishub is a web application that helps you to create and manage your wishlists.`,
     url: 'https://wishub.app',
-    available: true,
+    source: 'https://github.com/romanslonov/wishub.app',
   },
-];
+] as const;
 
-export function WorkItem({
-  item: { name, description, url, preview },
-}: ComponentPropsWithoutRef<'li'> & { item: Work }) {
+export function Item({
+  item: { name, description, url, source, preview },
+}: ComponentPropsWithoutRef<'li'> & { item: (typeof items)[number] }) {
   return (
     <li className="border dark:border-neutral-800 dark:bg-neutral-900/50 p-6 shadow-sm rounded-lg">
       <div className="flex items-center gap-3 mb-2">
@@ -62,7 +58,8 @@ export function WorkItem({
       ></p>
       <div className="flex items-center justify-between">
         <a
-          href="/"
+          href={source}
+          target="_blank"
           className="transition-colors border rounded-lg shadow-sm py-1.5 dark:border-neutral-700 dark:hover:bg-neutral-900 px-2 hover:bg-neutral-50 inline-flex text-xs font-medium items-center gap-2"
         >
           <GithubIcon className="w-4 h-4" />
@@ -87,7 +84,7 @@ export default function ProjectsList() {
       <h2 className="mb-4 text-lg font-medium">Projects</h2>
       <ul className="grid gap-4 md:grid-cols-2">
         {items.map((item) => (
-          <WorkItem key={item.name} item={item} />
+          <Item key={item.name} item={item} />
         ))}
         <li className="h-full flex flex-col gap-2 items-center py-8 shadow-sm justify-center w-full rounded-lg dark:border-neutral-700/70 border border-dashed">
           <ClockIcon className="w-6 h-6 text-neutral-500/50" />
