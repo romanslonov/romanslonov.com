@@ -7,7 +7,7 @@ import GithubIcon from '@/components/icons/github';
 const items = [
   {
     preview: {
-      src: 'https://webvirt.cloud/logo.svg',
+      src: '/webvirtcloud.svg',
       alt: 'WebVirtCloud preview',
     },
     name: 'WebVirtCloud',
@@ -45,17 +45,16 @@ export function Item({
       <div className="flex items-center gap-3 mb-2">
         <Image
           src={preview?.src}
-          width={40}
-          height={40}
+          width={32}
+          height={32}
           className="mb-2"
           alt={preview.alt}
         />
         <h3 className="mb-2 text-lg font-medium">{name}</h3>
       </div>
       <p
-        className="flex-1 mb-4 text-neutral-500 dark:text-neutral-400"
-        dangerouslySetInnerHTML={{ __html: description }}
-      ></p>
+        className="flex-1 mb-4 text-sm text-neutral-500 dark:text-neutral-400"
+      >{description}</p>
       <div className="flex items-center justify-between">
         <a
           href={source}

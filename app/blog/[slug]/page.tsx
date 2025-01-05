@@ -4,7 +4,6 @@ import { getBlogPosts } from '../utils';
 import { CustomMDX } from '@/components/custom-mdx';
 import PostStats from '@/components/post-stats';
 import { Like } from '@/components/like';
-import { format } from 'date-fns';
 
 interface Props {
   params: { slug: string };
@@ -50,7 +49,7 @@ export default function Page({ params }: Props) {
 
   return (
     <>
-      <article className="py-8 prose prose-p:text-neutral-600 mx-auto prose-h1:leading-[42px] lg:prose-h1:leading-[56px] lg:prose-lg dark:prose-invert dark:prose-p:text-neutral-400 prose-h1:mb-4 xl:prose-h1:mb-4">
+      <article className="py-8 prose prose-p:text-neutral-600 mx-auto dark:prose-invert dark:prose-p:text-neutral-400 prose-h1:mb-4 xl:prose-h1:mb-4">
         <h1>{post.metadata.title}</h1>
         <PostStats
           publishedAt={post.metadata.publishedAt}
