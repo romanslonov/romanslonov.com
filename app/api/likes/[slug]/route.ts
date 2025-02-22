@@ -1,10 +1,10 @@
 import { createHash } from 'crypto';
-import { prisma } from 'lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { type NextRequest } from 'next/server';
 import { z } from 'zod';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 function getIpAddress(request: NextRequest) {
@@ -13,7 +13,8 @@ function getIpAddress(request: NextRequest) {
   return headers.get('x-forwarded-for') ?? '0.0.0.0';
 }
 
-export async function GET(request: NextRequest, { params }: Props) {
+export async function GET(request: NextRequest, props: Props) {
+  const params = await props.params;
   try {
     const ip = getIpAddress(request);
 
@@ -54,7 +55,8 @@ export async function GET(request: NextRequest, { params }: Props) {
   }
 }
 
-export async function POST(request: NextRequest, { params }: Props) {
+export async function POST(request: NextRequest, props: Props) {
+  const params = await props.params;
   try {
     const ip = getIpAddress(request);
 

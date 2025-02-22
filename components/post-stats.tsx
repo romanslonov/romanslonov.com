@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/cn';
 import { usePostLikes } from '@/lib/use-post-likes';
 import { usePostViews } from '@/lib/use-post-views';
 import { format } from 'date-fns';
@@ -8,10 +9,12 @@ import { useEffect } from 'react';
 export default function PostStats({
   slug,
   publishedAt,
+  className,
   interactable = false,
 }: {
   slug: string;
   publishedAt: string;
+  className?: string;
   interactable?: boolean;
 }) {
   const { views, increment: incrementViews } = usePostViews(slug);
@@ -24,7 +27,12 @@ export default function PostStats({
   }, [interactable]);
 
   return (
-    <div className="flex items-center gap-2 md:gap-3 flex-wrap md:flex-nowrap text-sm text-neutral-600 dark:text-neutral-400">
+    <div
+      className={cn(
+        'flex items-center font-mono tracking-tight text-xs gap-2 md:gap-3 flex-wrap md:flex-nowrap text-neutral-600 dark:text-neutral-400',
+        className,
+      )}
+    >
       <div className={'flex items-center gap-1 md:gap-2'}>
         <span className="whitespace-nowrap">
           {format(new Date(publishedAt), 'MMM d, yyy')}

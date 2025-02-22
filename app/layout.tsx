@@ -4,7 +4,7 @@ import { type PropsWithChildren } from 'react';
 import { type Metadata } from 'next';
 import { Navigation } from '@/app/navigation';
 import { baseUrl } from './sitemap';
-import Script from "next/script";
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Roman Slonov',
@@ -35,9 +35,9 @@ export default function Layout({ children }: PropsWithChildren) {
     <html lang="en" className="scroll-smooth">
       {gaTrackingId ? <GoogleAnalytics gaTrackingId={gaTrackingId} /> : null}
       <Script
-          strategy="lazyOnload"
-          src="https://umami.romanslonov.com/script.js"
-          data-website-id="f497bc3b-07d7-47b9-83d8-9dac4b9a1fdb"
+        strategy="lazyOnload"
+        src="https://umami.romanslonov.com/script.js"
+        data-website-id="f497bc3b-07d7-47b9-83d8-9dac4b9a1fdb"
       />
       <body className="flex min-h-screen flex-col overflow-x-hidden animate-blurred-fade-in">
         {/* max-w-3xl */}

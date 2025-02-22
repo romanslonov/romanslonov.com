@@ -8,10 +8,6 @@
   }
 }
 
-div[data-rehype-pretty-code-fragment] pre {
-  @apply text-[15px];
-}
-
 .animate-blurred-fade-in {
   animation: blurred-fade-in 1.2s ease-in-out;
 }

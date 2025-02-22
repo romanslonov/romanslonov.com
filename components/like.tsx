@@ -24,7 +24,7 @@ export function Like({ slug }: { slug: string }) {
             isCurrentUserLike ? 'text-red-500' : 'text-neutral-500 dark:text-neutral-400',
           )}
         />
-        {isLoading ? '...' : likes ?? '-'}
+        {isLoading ? '...' : (likes ?? '-')}
         <div className="h-4 mx-1 w-px bg-neutral-300 dark:bg-neutral-700"></div>
         {isCurrentUserLike ? 'Thanks!' : 'This was helpful?'}
       </button>

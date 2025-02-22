@@ -6,7 +6,7 @@ import PostStats from '@/components/post-stats';
 import { Like } from '@/components/like';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
@@ -17,7 +17,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata(props: Props) {
+  const params = await props.params;
   const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) notFound();
@@ -39,26 +40,26 @@ export function generateMetadata({ params }: Props): Metadata {
       title,
       description,
     },
-  };
+  } satisfies Metadata;
 }
 
-export default function Page({ params }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
   const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) notFound();
 
   return (
     <>
-      <article className="py-8 prose prose-p:text-neutral-600 mx-auto dark:prose-invert dark:prose-p:text-neutral-400 prose-h1:mb-4 xl:prose-h1:mb-4">
-        <h1>{post.metadata.title}</h1>
+      <article className="py-8 mx-auto max-w-screen-md">
+        <h1 className="text-2xl font-bold mb-2">{post.metadata.title}</h1>
         <PostStats
           publishedAt={post.metadata.publishedAt}
           slug={post.slug}
           interactable
+          className="mb-6"
         />
-        <div>
-          <CustomMDX source={post.content} />
-        </div>
+        <CustomMDX source={post.content} />
         <Like slug={post.slug} />
       </article>
     </>

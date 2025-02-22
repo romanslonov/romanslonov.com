@@ -1,12 +1,13 @@
 import { type NextRequest } from 'next/server';
-import { prisma } from 'lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export async function GET(request: NextRequest, { params }: Props) {
+export async function GET(request: NextRequest, props: Props) {
+  const params = await props.params;
   try {
     const slug = z.string().parse(params.slug);
 
@@ -28,7 +29,8 @@ export async function GET(request: NextRequest, { params }: Props) {
   }
 }
 
-export async function POST(request: NextRequest, { params }: Props) {
+export async function POST(request: NextRequest, props: Props) {
+  const params = await props.params;
   try {
     const slug = z.string().parse(params.slug);
 
