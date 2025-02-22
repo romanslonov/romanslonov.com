@@ -51,7 +51,7 @@ export default async function Page(props: Props) {
 
   return (
     <>
-      <article className="py-8 mx-auto max-w-screen-md">
+      <article className="py-8 mx-auto max-w-(--breakpoint-md)">
         <h1 className="text-2xl font-bold mb-2">{post.metadata.title}</h1>
         <PostStats
           publishedAt={post.metadata.publishedAt}

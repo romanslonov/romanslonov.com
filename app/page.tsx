@@ -15,7 +15,7 @@ export default function Page() {
       <header className="pt-8 pb-16 max-w-3xl mx-auto">
         <div className="relative mb-16 inline-block">
           <Image
-            className="flex-shrink-0 mb-4 rounded-lg md:mb-0"
+            className="shrink-0 mb-4 rounded-lg md:mb-0"
             priority
             src="/avatar.jpg"
             width={100}

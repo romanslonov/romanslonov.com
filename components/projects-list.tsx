@@ -41,7 +41,7 @@ export function Item({
   item: { name, description, url, source, preview },
 }: ComponentPropsWithoutRef<'li'> & { item: (typeof items)[number] }) {
   return (
-    <li className="border dark:border-neutral-800 dark:bg-neutral-900/50 p-6 shadow-sm rounded-lg">
+    <li className="border dark:border-neutral-800 dark:bg-neutral-900/50 p-6 shadow-xs rounded-lg">
       <div className="flex items-center gap-3 mb-2">
         <Image
           src={preview?.src}
@@ -59,7 +59,7 @@ export function Item({
         <a
           href={source}
           target="_blank"
-          className="transition-colors border rounded-lg shadow-sm py-1.5 dark:border-neutral-700 dark:hover:bg-neutral-900 px-2 hover:bg-neutral-50 inline-flex text-xs font-medium items-center gap-2"
+          className="transition-colors border rounded-lg shadow-xs py-1.5 dark:border-neutral-700 dark:hover:bg-neutral-900 px-2 hover:bg-neutral-50 inline-flex text-xs font-medium items-center gap-2"
         >
           <GithubIcon className="w-4 h-4" />
           Source code
@@ -85,7 +85,7 @@ export default function ProjectsList() {
         {items.map((item) => (
           <Item key={item.name} item={item} />
         ))}
-        <li className="h-full flex flex-col gap-2 items-center py-8 shadow-sm justify-center w-full rounded-lg dark:border-neutral-700/70 border border-dashed">
+        <li className="h-full flex flex-col gap-2 items-center py-8 shadow-xs justify-center w-full rounded-lg dark:border-neutral-700/70 border border-dashed">
           <ClockIcon className="w-6 h-6 text-neutral-500/50" />
           <p className="text-neutral-600 dark:text-neutral-400 text-sm">
             More coming soon
