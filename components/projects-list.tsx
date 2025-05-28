@@ -7,16 +7,6 @@ import GithubIcon from '@/components/icons/github';
 const items = [
   {
     preview: {
-      src: '/webvirtcloud.svg',
-      alt: 'WebVirtCloud preview',
-    },
-    name: 'WebVirtCloud',
-    description: `Meet a modern and powerful all-in-one cloud management platform for your company & your clients.`,
-    url: 'https://webvirt.cloud',
-    source: 'https://github.com/orgs/webvirtcloud/repositories',
-  },
-  {
-    preview: {
       src: '/unimark.svg',
       alt: 'Unimark preview',
     },
@@ -85,7 +75,13 @@ export default function ProjectsList() {
         {items.map((item) => (
           <Item key={item.name} item={item} />
         ))}
-        <li className="h-full flex flex-col gap-2 items-center py-8 shadow-xs justify-center w-full rounded-lg dark:border-neutral-700/70 border border-dashed">
+        <li className="h-full flex flex-col gap-2 items-center py-16 shadow-xs justify-center w-full rounded-lg dark:border-neutral-700/70 border border-dashed">
+          <ClockIcon className="w-6 h-6 text-neutral-500/50" />
+          <p className="text-neutral-600 dark:text-neutral-400 text-sm">
+            More coming soon
+          </p>
+        </li>
+        <li className="h-full flex flex-col gap-2 items-center py-16 shadow-xs justify-center w-full rounded-lg dark:border-neutral-700/70 border border-dashed">
           <ClockIcon className="w-6 h-6 text-neutral-500/50" />
           <p className="text-neutral-600 dark:text-neutral-400 text-sm">
             More coming soon
