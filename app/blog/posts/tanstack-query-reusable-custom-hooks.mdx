@@ -61,4 +61,103 @@ export function usePost(
 }
 ```
 
-Thats it! Now you can reuse your custom hooks with any options you want. I show example in React but it also works in Vue, etc.
+## Solution #3: Query Options — My Favorite
+
+Here is my favorite solution that I have been using for over a year and which has become my go-to approach.
+
+This approach allows you to abstract away not only `queryKey` and `queryFn`, but also default settings (e.g., `staleTime`, `gcTime`) into a separate, reusable object, which can then be easily extended in the component.
+
+### Defining Query Options
+
+Let's create a file, for example, `posts/queries.ts`, where query options related to posts will be stored.
+
+```ts
+// /post/queries.ts
+
+import { type Post, getPost } from '@/entities/post';
+import { type QueryOptions } from '@tanstack/react-query';
+
+/**
+ * Creates a QueryOptions object for fetching a specific post.
+ * @param id The ID of the post.
+ */
+export const postQueryOptions = (id: number): QueryOptions<Post, Error> => ({
+  queryKey: ['posts', 'post', id], // or postsKeys.post(id) - if you use a key convention
+  queryFn: () => getPost(id).then((response) => response.post),
+  staleTime: 300_000, // 5 minutes - example of a default value
+  // You can add any other default parameters here (e.g., retry, gcTime)
+});
+```
+
+### Using Query Options with useQuery
+
+Now, we can use this `postQueryOptions` object directly within the `useQuery` hook anywhere in the application, easily overriding or adding specific options.
+
+```ts
+// In a component
+
+import { useQuery } from '@tanstack/react-query';
+import { postQueryOptions } from '@/posts/queries';
+
+const postId = 5;
+
+// We spread the default options and add our own
+const { data, isLoading, error } = useQuery({ // data is automatically typed as Post
+  ...postQueryOptions(postId),
+  // Here you can add your own parameters (e.g., select, enabled)
+  // or override the default ones defined above (e.g., staleTime: 0)
+  enabled: postId !== 0, // Example of adding a new option
+});
+```
+
+### What About Mutations?
+
+The same principle works for Mutations (data changes)! Use MutationOptions to create reusable mutation configurations.
+
+1. Defining Mutation Options
+```ts
+// /post/mutations.ts
+
+import { type MutationOptions } from '@tanstack/react-query';
+import { createPost, type PostPayload, type Post } from '@/entities/post';
+
+/**
+ * Creates a MutationOptions object for creating a new post.
+ */
+export const createPostMutationOptions = ()  => ({
+  mutationFn: (payload) => createPost(payload), // Your function to call the API
+  // You can add default settings here, e.g., retry: 1
+});
+```
+
+### Using Mutation Options with useMutation
+
+In the component, we simply spread the mutation options and add the necessary callbacks (`onSuccess`, `onError`) or other settings.
+
+```ts
+// In a component
+
+import { useMutation } from '@tanstack/react-query';
+import { createPostMutationOptions } from '@/posts/mutations';
+
+const { mutateAsync: createPostMutate, isPending, error } = useMutation({
+  ...createPostMutationOptions(),
+  onSuccess: (data) => {
+    console.log('Post created:', data.id);
+    // e.g., You might invalidate the cache here
+    // queryClient.invalidateQueries(['posts']);
+  },
+});
+
+// Calling the mutation in your code
+async function handleCreatePost() {
+  try {
+    const newPost = await createPostMutate({ title: 'First post!', content: 'Wooow!' });
+    // Further logic
+  } catch (err) {
+    console.error('Creation error:', err);
+  }
+}
+```
+
+That's it! Now you can reuse your custom hooks and configurations with any options you want. The examples shown here are in React, but the concept also works for Vue, Solid, and other adapters.
