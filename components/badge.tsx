@@ -1,4 +1,4 @@
-interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {}
+type BadgeProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function Badge({ children }: BadgeProps) {
   return (

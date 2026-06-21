@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import useSwr from 'swr';
 const API_URL = `/api/views`;
 
@@ -23,12 +24,12 @@ export function usePostViews(slug: string) {
     getPostViews(slug).then((response) => response.views),
   );
 
-  const increment = async () => {
+  const increment = useCallback(async () => {
     try {
       const response = await updatePostViews(slug);
       mutate(response.views);
-    } catch (error) {}
-  };
+    } catch {}
+  }, [slug, mutate]);
 
   return {
     views,

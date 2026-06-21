@@ -42,13 +42,14 @@ export async function GET(request: NextRequest, props: Props) {
       likes: post?.likes || 0,
       isCurrentUserLiked: user?.like,
     });
-  } catch (err: any) {
-    console.error(err.message);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error(message);
 
     return Response.json(
       {
         statusCode: 500,
-        message: err.message,
+        message,
       },
       { status: 500 },
     );
@@ -90,13 +91,14 @@ export async function POST(request: NextRequest, props: Props) {
       likes: post?.likes || 0,
       isCurrentUserLiked: user?.like,
     });
-  } catch (err: any) {
-    console.error(err.message);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error(message);
 
     return Response.json(
       {
         statusCode: 500,
-        message: err.message,
+        message,
       },
       { status: 500 },
     );

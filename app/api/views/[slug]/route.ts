@@ -16,13 +16,14 @@ export async function GET(request: NextRequest, props: Props) {
     });
 
     return Response.json({ views: post?.views || 1 });
-  } catch (error: any) {
-    console.error(error.message);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error(message);
 
     return Response.json(
       {
         statusCode: 500,
-        message: error.message,
+        message,
       },
       { status: 500 },
     );
@@ -41,13 +42,14 @@ export async function POST(request: NextRequest, props: Props) {
     });
 
     return Response.json({ views: post?.views || 1 });
-  } catch (error: any) {
-    console.error(error.message);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error(message);
 
     return Response.json(
       {
         statusCode: 500,
-        message: error.message,
+        message,
       },
       { status: 500 },
     );

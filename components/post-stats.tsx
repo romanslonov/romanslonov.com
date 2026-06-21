@@ -18,13 +18,13 @@ export default function PostStats({
   interactable?: boolean;
 }) {
   const { views, increment: incrementViews } = usePostViews(slug);
-  const { likes, isCurrentUserLike, isLoading, increment: like } = usePostLikes(slug);
+  const { likes } = usePostLikes(slug);
 
   useEffect(() => {
     if (interactable) {
       incrementViews();
     }
-  }, [interactable]);
+  }, [interactable, incrementViews]);
 
   return (
     <div
