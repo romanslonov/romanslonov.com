@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: PropsWithChildren) {
   const gaTrackingId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       {gaTrackingId ? <GoogleAnalytics gaTrackingId={gaTrackingId} /> : null}
       <Script
         strategy="afterInteractive"
